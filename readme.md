@@ -11,6 +11,11 @@ python fulfill_orders.py
 - line 9: process the orders. The process_orders function returns a list of order IDs that couldn't be fulfilled.
 - line 15: check and reorder products that have been depleted below their reorder threshold
 
+## Caveats
+- 'Pending purchase orders' are not tracked in the products data, but it would probably be necessary to track this so that new purchase orders are not generated before existing purchase orders are received.
+- It would probably be desirable to merge purchase orders for products that come from the same supplier.
+- Data sanitizing, and 'shape checking', would be important in production, along with unit tests. 
+
 ## Reference
 
 function: **products_to_dict**(product_list)
