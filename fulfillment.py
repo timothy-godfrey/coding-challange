@@ -49,11 +49,15 @@ def reorder(inventory):
             threshold = product['reorderThreshold']
             if on_hand < threshold:
                 # need to also check that there's not a pending purchase order
-                id = product['productId']
-                quantity = product['reorderAmount']
-                print(f'Reorder item {id} x {quantity}')
+                generate_purchase_order(product)
                 products_order_pending.append(id)
         except KeyError:
             print(f'Error re-ordering item')
             print(product)
     return products_order_pending
+
+
+def generate_purchase_order(product):
+    id = product['productId']
+    quantity = product['reorderAmount']
+    print(f'Reorder item {id} x {quantity}')
