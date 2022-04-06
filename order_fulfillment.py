@@ -52,5 +52,13 @@ for order in orders:
         unfulfillable.append(order['orderId'])
 
 print('unfillable')
-for id in unfulfillable:
+for order in unfulfillable:
+    id = order['orderId']
     print(f'{id}')
+
+# order low stock
+for item in inventory:
+    on_hand = item['quantityOnHand']
+    threshold = item['reorderThreshold']
+    if on_hand < threshold:
+        reorder(item)
