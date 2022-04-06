@@ -1,7 +1,3 @@
-import json
-import pdb
-
-
 def products_to_dict(product_list):
     inventory = {}
     for product in product_list:
@@ -61,18 +57,3 @@ def reorder(inventory):
             print(f'Error re-ordering item')
             print(product)
     return products_order_pending
-
-
-#  Main process
-data_file = open('data.json')
-data = json.load(data_file)
-
-inventory = products_to_dict(data['products'])
-orders = data['orders']
-unfulfillable = process_orders(orders, inventory)
-
-print('\nUnfillable orders:')
-for order in unfulfillable:
-    print(f'\t{order}')
-
-reorder(inventory)
